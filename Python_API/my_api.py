@@ -24,7 +24,7 @@ class Passenger(db.Model): ##row in a db
         }
     
 with app.app_context():
-    db.create_all()
+    db.create_all() 
 
 
 ##Random routes
@@ -33,8 +33,17 @@ def home():
     return jsonify({"message": "welcome to the travel api"})
 
 
+#if we have a URL and we want certain info from it like 
+## https://www.thenerdnook.io/destinations we do the following 
 
+@app.route("/destinations", methods=["GET"])
+def get_destinations():
+    destinations = destinations.query.all()
+    
+    return jsonify([destination.to_dict()] for destination in destinations)
 
+#https://www.thenerdnook.io/destinations/2 
+@app.route
 
 
 
