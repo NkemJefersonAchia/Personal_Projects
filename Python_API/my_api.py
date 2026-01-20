@@ -43,7 +43,9 @@ def get_destinations():
     return jsonify([destination.to_dict()] for destination in destinations)
 
 #https://www.thenerdnook.io/destinations/2 
-@app.route
+@app.route("/destinations/<int:destination_id>", methods=["GET"])
+def get_destination():
+    destination = destination.query.get(destination)
 
 
 
